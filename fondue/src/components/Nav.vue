@@ -5,10 +5,10 @@
     </div>
 </template>
 <script>
-import MenuBtn from "./MenuBtn";
-import PresentBtn from "./PresentBtn";
+import MenuBtn from './MenuBtn';
+import PresentBtn from './PresentBtn';
 export default {
-    name: "Nav",
+    name: 'Nav',
     components: {
         MenuBtn,
         PresentBtn,

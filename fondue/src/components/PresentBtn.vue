@@ -6,7 +6,7 @@
 </template>
 <script>
 export default {
-    name: "PresentBtn",
+    name: 'PresentBtn',
 };
 </script>
 <style scoped>

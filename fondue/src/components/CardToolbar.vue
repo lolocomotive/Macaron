@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-    name: "CardToolbar",
+    name: 'CardToolbar',
     props: {
         title: String,
         active: Boolean,
@@ -19,12 +19,11 @@ export default {
     overflow: hidden;
     opacity: 0;
     color: white;
-    margin-left: -1px;
     background-color: var(--purple);
     user-select: none;
 }
 
-.card-toolbar:focus-within {
+.card-toolbar.active {
     opacity: 1;
     height: 20px;
     padding: 5px;

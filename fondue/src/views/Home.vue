@@ -2,16 +2,16 @@
     <div class="home">
         <Nav />
         <div id="body">
-            <Cards :content="content" />
+            <Cards @changeActive="changeActive" :content="content" />
         </div>
     </div>
 </template>
 
 <script>
-import Nav from "@/components/Nav.vue";
-import Cards from "@/components/Cards.vue";
+import Nav from '@/components/Nav';
+import Cards from '@/components/Cards';
 export default {
-    name: "Home",
+    name: 'Home',
     components: { Nav, Cards },
     data() {
         return {
@@ -21,36 +21,58 @@ export default {
     computed: {
         getCards() {
             return this.content.filter((el) => {
-                return el.type === "card";
+                return el.type === 'card';
             });
         },
         getCategories() {
             return this.content.filter((el) => {
-                return el.type === "category";
+                return el.type === 'category';
             });
         },
     },
     created() {
         this.content = [
             {
-                type: "card",
-                text: "Title card",
+                type: 'card',
+                text: 'Title card',
                 id: 0,
+                active: false,
             },
             {
-                type: "category",
+                type: 'category',
                 id: 1,
                 content: [
                     {
                         id: 2,
-                        type: "card",
-                        text: "Card 1",
+                        type: 'card',
+                        text: 'Card 1',
+                        active: false,
                     },
-                    { id: 3, type: "card", text: "Card 2" },
-                    { id: 4, type: "card", text: "Card 3" },
+                    { id: 3, type: 'card', text: 'Card 2', active: false },
+                    { id: 4, type: 'card', text: 'Card 3', active: false },
                 ],
             },
         ];
+    },
+    methods: {
+        setActive(id, content) {
+            for (var element of content) {
+                if (element.type === 'card') {
+                    if (element.id == id) {
+                        console.log('Element', id, 'is now active');
+                        element.active = true;
+                    } else {
+                        element.active = false;
+                    }
+                } else {
+                    this.setActive(id, element.content);
+                }
+            }
+        },
+        changeActive(id) {
+            this.setActive(id, this.content);
+            console.log(id);
+        },
     },
 };
 </script>

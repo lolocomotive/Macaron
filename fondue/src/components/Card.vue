@@ -7,10 +7,10 @@
     </div>
 </template>
 <script>
-import CardToolbar from "./CardToolbar.vue";
+import CardToolbar from './CardToolbar.vue';
 
 export default {
-    name: "Card",
+    name: 'Card',
     props: {
         text: String,
         active: Boolean,
@@ -21,8 +21,8 @@ export default {
     },
     methods: {
         focus() {
-            this.$emit("focus", this.id);
-            console.log("Element", this.id, "has been focused");
+            this.$emit('changeActive', this.id);
+            console.log('Element', this.id, 'has been focused');
         },
     },
 };
@@ -33,6 +33,15 @@ export default {
     max-width: var(--card-width);
     background-color: white;
     margin-bottom: 15px;
+    border: solid #00000030 1pt;
+}
+.card:hover {
+    outline: solid #00000030 1pt;
+    outline-offset: -1pt;
+}
+.card.active:hover {
+    outline-offset: -2pt;
+    outline-color: var(--pink);
 }
 .card-body {
     padding: 15px;

@@ -18,7 +18,7 @@
 
     --navbar-font-size: 2em;
 }
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
 #app {
     font-family: Lato, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;

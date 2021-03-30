@@ -1,4 +1,4 @@
-# fondue
+# Fondue 
 
 ## Project setup
 ```

@@ -1,15 +1,15 @@
 <template>
     <div class="category-wrapper">
-        <CardToolbar title="Modify me" />
         <div class="category">
-            <Cards :content="content" />
+            <Cards @changeActive="changeActive" :content="content" />
         </div>
     </div>
 </template>
 <script>
-import Cards from "./Cards";
+import Cards from './Cards';
+
 export default {
-    name: "Category",
+    name: 'Category',
     components: {
         Cards,
     },
@@ -17,13 +17,9 @@ export default {
         content: Object,
     },
     methods: {
-        toggleActive() {
-            console.log(this.card1Active);
-            this.card1Active = !this.card1Active;
+        changeActive(id) {
+            this.$emit('changeActive', id);
         },
-    },
-    data() {
-        return { card1Active: true };
     },
 };
 </script>
