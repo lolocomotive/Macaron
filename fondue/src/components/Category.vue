@@ -1,11 +1,18 @@
 <template>
     <div class="category-wrapper">
         <div class="category">
-            <Cards @changeActive="changeActive" :content="content" />
+            <Cards
+                @changeContent="changeContent"
+                @changeActive="changeActive"
+                :content="content"
+            />
         </div>
     </div>
 </template>
 <script>
+// ! IMPORTANT
+//FIXME fix "Failed to resolve component: Cards"
+
 import Cards from './Cards';
 
 export default {
@@ -13,12 +20,16 @@ export default {
     components: {
         Cards,
     },
+
     props: {
         content: Object,
     },
     methods: {
         changeActive(id) {
             this.$emit('changeActive', id);
+        },
+        changeContent(id, content) {
+            this.$emit('changeContent', id, content);
         },
     },
 };

@@ -1,5 +1,6 @@
 <template>
     <div id="menuBtn">
+        <!--TODO add icon -->
         <img src="" alt="Menu" />
         <div id="title">Macaron</div>
     </div>

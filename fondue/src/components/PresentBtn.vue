@@ -1,5 +1,6 @@
 <template>
     <div id="present-container">
+        <!--TODO Add icon-->
         <img src="" alt="" />
         <div id="present-text">Présenter</div>
     </div>

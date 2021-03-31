@@ -2,7 +2,11 @@
     <div class="home">
         <Nav />
         <div id="body">
-            <Cards @changeActive="changeActive" :content="content" />
+            <Cards
+                @changeContent="changeContent"
+                @changeActive="changeActive"
+                :content="content"
+            />
         </div>
     </div>
 </template>
@@ -35,6 +39,7 @@ export default {
             {
                 type: 'card',
                 text: 'Title card',
+                cardType: 'title',
                 id: 0,
                 active: false,
             },
@@ -45,11 +50,45 @@ export default {
                     {
                         id: 2,
                         type: 'card',
+                        cardType: 'text',
                         text: 'Card 1',
                         active: false,
                     },
-                    { id: 3, type: 'card', text: 'Card 2', active: false },
-                    { id: 4, type: 'card', text: 'Card 3', active: false },
+                    {
+                        id: 3,
+                        type: 'card',
+                        cardType: 'text',
+                        text: 'Card 2',
+                        active: false,
+                    },
+                    {
+                        id: 4,
+                        type: 'card',
+                        cardType: 'text',
+                        text: 'Card 3',
+                        active: false,
+                    },
+                ],
+            },
+            {
+                type: 'category',
+                id: 7,
+                content: [
+                    {
+                        type: 'category',
+                        id: 8,
+                        content: [
+                            {
+                                id: 9,
+                                type: 'card',
+                                text: 'Sabranamedecla',
+                                active: false,
+                            },
+                        ],
+                    },
+                    { id: 10, type: 'card', text: 'Card 1', active: false },
+                    { id: 11, type: 'card', text: 'Card 2', active: false },
+                    { id: 12, type: 'card', text: 'Card 3', active: false },
                 ],
             },
         ];
@@ -58,12 +97,7 @@ export default {
         setActive(id, content) {
             for (var element of content) {
                 if (element.type === 'card') {
-                    if (element.id == id) {
-                        console.log('Element', id, 'is now active');
-                        element.active = true;
-                    } else {
-                        element.active = false;
-                    }
+                    element.active = element.id == id;
                 } else {
                     this.setActive(id, element.content);
                 }
@@ -71,7 +105,23 @@ export default {
         },
         changeActive(id) {
             this.setActive(id, this.content);
-            console.log(id);
+        },
+        changeContent(id, content) {
+            this.getElement(id, this.content).text = content;
+        },
+        getElement(id, content) {
+            for (var element of content) {
+                if (element.type === 'card') {
+                    if (element.id == id) {
+                        return element;
+                    }
+                } else {
+                    var tempEl = this.getElement(id, element.content);
+                    if (!(tempEl == null || tempEl == undefined)) {
+                        return tempEl;
+                    }
+                }
+            }
         },
     },
 };

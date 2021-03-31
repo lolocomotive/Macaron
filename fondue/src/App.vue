@@ -41,4 +41,8 @@
 body {
     margin: 0;
 }
+::selection {
+    background-color: var(--pink);
+    color: white;
+}
 </style>

@@ -2,7 +2,14 @@
     <div onclick="click" :class="'card' + (active ? ' active' : '')">
         <CardToolbar :active="active" title="Titre" />
         <div class="card-body">
-            <h1 :onfocus="focus" contenteditable="true">{{ text }}</h1>
+            <div
+                :class="`content ${type}`"
+                :oninput="updateContent"
+                :onfocus="focus"
+                contenteditable="true"
+            >
+                {{ text }}
+            </div>
         </div>
     </div>
 </template>
@@ -15,6 +22,7 @@ export default {
         text: String,
         active: Boolean,
         id: Number,
+        type: String,
     },
     components: {
         CardToolbar,
@@ -22,7 +30,13 @@ export default {
     methods: {
         focus() {
             this.$emit('changeActive', this.id);
-            console.log('Element', this.id, 'has been focused');
+        },
+        updateContent() {
+            this.$emit(
+                'changeContent',
+                this.id,
+                this.$el.children[1].children[0].innerText
+            );
         },
     },
 };
@@ -50,16 +64,21 @@ export default {
 .card.active {
     border: solid var(--pink) 1pt;
 }
-h1 {
+.content.title {
+    text-align: center;
+    font-weight: 300;
+    font-size: 4em;
+}
+.content.text {
+    font-size: 1em;
+}
+.content {
     margin: 0;
     background-color: none;
     transition: all 0.1s;
     box-shadow: 0 0 0 15px transparent;
-    text-align: center;
-    font-weight: 300;
-    font-size: 3em;
 }
-h1:focus {
+.content:focus {
     background-color: var(--light-pink);
     box-shadow: 0 0 0 15px var(--light-pink);
     outline: none;
