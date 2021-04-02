@@ -15,3 +15,4 @@
     <td>Frontend</td>
   </tr>
 </table>
+For now, the project is still in the early stages of developpement, backend developpement has not even started and frontend is being developped.
