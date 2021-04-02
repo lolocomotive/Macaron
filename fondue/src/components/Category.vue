@@ -1,8 +1,14 @@
 <template>
     <div class="category-wrapper">
-        <CategoryToolbar :title="title" :active="true" />
+        <CategoryToolbar
+            @deleteCategory="deleteCategory"
+            :title="title"
+            :active="true"
+        />
         <div :class="'category' + (isSubcategory ? ' sub' : '')">
             <Cards
+                @deleteItem="deleteItem"
+                @deleteCategory="passDeleteCategory"
                 @changeContent="changeContent"
                 @changeActive="changeActive"
                 :content="content"
@@ -34,6 +40,15 @@ export default {
         },
         changeContent(id, content) {
             this.$emit('changeContent', id, content);
+        },
+        deleteCategory() {
+            this.$emit('deleteCategory', this.id);
+        },
+        passDeleteCategory(id) {
+            this.$emit('deleteCategory', id);
+        },
+        deleteItem(id) {
+            this.$emit('deleteItem', id);
         },
     },
 };

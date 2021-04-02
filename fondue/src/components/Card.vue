@@ -1,6 +1,6 @@
 <template>
     <div :onclick="click" :class="`card ${type}` + (active ? ' active' : '')">
-        <CardToolbar :active="active" title="Titre" />
+        <CardToolbar @deleteItem="deleteItem" :active="active" title="Titre" />
         <div class="card-body">
             <div
                 :class="`content ${type}` + (active ? ' active' : '')"
@@ -41,6 +41,9 @@ export default {
         },
         click() {
             this.$el.children[1].children[0].focus();
+        },
+        deleteItem() {
+            this.$emit('deleteItem', this.id);
         },
     },
 };

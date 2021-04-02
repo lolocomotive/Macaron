@@ -1,14 +1,26 @@
 <template>
     <div :class="'card-toolbar' + (active ? ' active' : '')">
         {{ title }}
+        <div class="category-toolbar-icons">
+            <Icon icon="fas fa-trash" @click="deleteItem" />
+        </div>
     </div>
 </template>
 <script>
+import Icon from './Icon';
 export default {
     name: 'CardToolbar',
     props: {
         title: String,
         active: Boolean,
+    },
+    methods: {
+        deleteItem() {
+            this.$emit('deleteItem');
+        },
+    },
+    components: {
+        Icon,
     },
 };
 </script>
@@ -21,6 +33,9 @@ export default {
     color: white;
     background-color: var(--purple);
     user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .card-toolbar.active {

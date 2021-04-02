@@ -4,6 +4,7 @@
             <Card
                 @changeActive="changeActive"
                 @changeContent="changeContent"
+                @deleteItem="deleteItem"
                 v-if="item.type === 'card'"
                 :text="item.text"
                 :id="item.id"
@@ -11,6 +12,8 @@
                 :type="item.cardType"
             />
             <Category
+                @deleteItem="deleteItem"
+                @deleteCategory="deleteCategory"
                 @changeActive="changeActive"
                 @changeContent="changeContent"
                 v-else-if="item.type === 'category'"
@@ -39,8 +42,14 @@ export default {
         changeActive(id) {
             this.$emit('changeActive', id);
         },
+        deleteCategory(id) {
+            this.$emit('deleteCategory', id);
+        },
         changeContent(id, content) {
             this.$emit('changeContent', id, content);
+        },
+        deleteItem(id) {
+            this.$emit('deleteItem', id);
         },
     },
     beforeCreate: function () {

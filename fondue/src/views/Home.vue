@@ -3,7 +3,9 @@
         <Nav />
         <div id="body">
             <Cards
+                @deleteCategory="deleteCategory"
                 @changeContent="changeContent"
+                @deleteItem="deleteItem"
                 @changeActive="changeActive"
                 :content="content"
                 :cards="getCardsComponent"
@@ -152,16 +154,37 @@ export default {
         },
         getElement(id, content) {
             for (var element of content) {
-                if (element.type === 'card') {
-                    if (element.id == id) {
-                        return element;
-                    }
-                } else {
+                if (element.id == id) {
+                    return element;
+                } else if (element.type === 'category') {
                     var tempEl = this.getElement(id, element.content);
                     if (!(tempEl == null || tempEl == undefined)) {
                         return tempEl;
                     }
                 }
+            }
+        },
+        deleteElement(id, content) {
+            for (var i in content) {
+                if (content[i].id == id) {
+                    return content.splice(i, 1);
+                } else if (content[i].type === 'category') {
+                    var removedEl = this.deleteElement(id, content[i].content);
+                    if (!removedEl == -1) {
+                        return removedEl;
+                    }
+                }
+            }
+            return -1;
+        },
+        deleteCategory(id) {
+            if (confirm('Are you sure? This action cannot be undone')) {
+                this.deleteElement(id, this.content);
+            }
+        },
+        deleteItem(id) {
+            if (confirm('Are you sure? This action cannot be undone')) {
+                this.deleteElement(id, this.content);
             }
         },
     },
