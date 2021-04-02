@@ -12,6 +12,7 @@
     --yellow: #f2f6d0ff;
     --green: #c5ebc3ff;
     --light-pink: #f4acb730;
+    --light-purple: #3d264560;
 
     --card-width: 1050px;
     --category-additional-width: 50px;

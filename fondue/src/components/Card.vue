@@ -1,5 +1,5 @@
 <template>
-    <div onclick="click" :class="'card' + (active ? ' active' : '')">
+    <div :onclick="click" :class="`card ${type}` + (active ? ' active' : '')">
         <CardToolbar :active="active" title="Titre" />
         <div class="card-body">
             <div
@@ -38,6 +38,9 @@ export default {
                 this.$el.children[1].children[0].innerText
             );
         },
+        click() {
+            this.$el.children[1].children[0].focus();
+        },
     },
 };
 </script>
@@ -50,7 +53,7 @@ export default {
     border: solid #00000030 1pt;
 }
 .card:hover {
-    outline: solid #00000030 1pt;
+    outline: solid #00000030 2pt;
     outline-offset: -1pt;
 }
 .card.active:hover {

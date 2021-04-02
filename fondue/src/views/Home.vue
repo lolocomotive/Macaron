@@ -6,6 +6,8 @@
                 @changeContent="changeContent"
                 @changeActive="changeActive"
                 :content="content"
+                :cards="getCardsComponent"
+                :isSubcategory="false"
             />
         </div>
     </div>
@@ -33,6 +35,9 @@ export default {
                 return el.type === 'category';
             });
         },
+        getCardsComponent() {
+            return Cards;
+        },
     },
     created() {
         this.content = [
@@ -46,6 +51,7 @@ export default {
             {
                 type: 'category',
                 id: 1,
+                title: 'Category 1',
                 content: [
                     {
                         id: 2,
@@ -73,10 +79,12 @@ export default {
             {
                 type: 'category',
                 id: 7,
+                title: 'Category 2',
                 content: [
                     {
                         type: 'category',
                         id: 8,
+                        title: 'category 3',
                         content: [
                             {
                                 id: 9,

@@ -1,28 +1,32 @@
 <template>
     <div class="category-wrapper">
-        <div class="category">
+        <CategoryToolbar :title="title" :active="true" />
+        <div :class="'category' + (isSubcategory ? ' sub' : '')">
             <Cards
                 @changeContent="changeContent"
                 @changeActive="changeActive"
                 :content="content"
+                :isSubcategory="true"
             />
         </div>
     </div>
 </template>
 <script>
-// ! IMPORTANT
-//FIXME fix "Failed to resolve component: Cards"
-
-import Cards from './Cards';
-
+import Cards from './Cards.vue';
+import CategoryToolbar from './CategoryToolbar';
 export default {
     name: 'Category',
     components: {
         Cards,
+        CategoryToolbar,
     },
 
     props: {
         content: Object,
+        id: Number,
+        cards: Object,
+        isSubcategory: Boolean,
+        title: String,
     },
     methods: {
         changeActive(id) {
@@ -34,16 +38,24 @@ export default {
     },
 };
 </script>
+
 <style scoped>
 .category {
     padding: 35px;
+    padding-bottom: 20px;
+}
+.category.sub {
+    padding-left: 0;
+    padding-right: 0;
 }
 .category-wrapper {
     border: solid darkgrey 1pt;
     margin: auto;
-    margin-top: 25px;
+    margin-bottom: 25px;
     max-width: calc(var(--card-width) + var(--category-additional-width));
     background-color: #00000010;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
 }
 .card-toolbar {
     margin-top: -1px;

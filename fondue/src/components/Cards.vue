@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-for="item in content" :key="item.id" class="element">
+        <div v-for="item in content" :key="item" class="element">
             <Card
                 @changeActive="changeActive"
                 @changeContent="changeContent"
@@ -16,18 +16,24 @@
                 v-else-if="item.type === 'category'"
                 :content="item.content"
                 :id="item.id"
+                :cards="cards"
+                :title="item.title"
+                :isSubcategory="isSubcategory"
             />
         </div>
     </div>
 </template>
 <script>
 import Card from './Card';
-import Category from './Category';
+//import Category from './Category';
+
 export default {
     name: 'Cards',
-    components: { Card, Category },
+    components: { Card /*Category*/ },
     props: {
         content: Object,
+        cards: Object,
+        isSubcategory: Boolean,
     },
     methods: {
         changeActive(id) {
@@ -36,6 +42,9 @@ export default {
         changeContent(id, content) {
             this.$emit('changeContent', id, content);
         },
+    },
+    beforeCreate: function () {
+        this.$options.components.Category = require('./Category.vue').default;
     },
 };
 </script>

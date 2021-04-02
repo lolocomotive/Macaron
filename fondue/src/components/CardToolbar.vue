@@ -15,12 +15,13 @@ export default {
 <style scoped>
 .card-toolbar {
     height: 0px;
-    transition: all 0.1s;
+    transition: all 0.2s;
     overflow: hidden;
     opacity: 0;
     color: white;
     background-color: var(--purple);
     user-select: none;
+    margin: -1px;
 }
 
 .card-toolbar.active {
