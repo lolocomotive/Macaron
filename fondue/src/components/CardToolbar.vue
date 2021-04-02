@@ -21,7 +21,6 @@ export default {
     color: white;
     background-color: var(--purple);
     user-select: none;
-    margin: -1px;
 }
 
 .card-toolbar.active {

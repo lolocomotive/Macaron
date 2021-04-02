@@ -23,7 +23,6 @@ export default {
     padding: 5px;
     border-bottom: solid #00000030 1pt;
     background-color: var(--light-purple);
-    margin: -1px;
 }
 
 .category-toolbar:focus {

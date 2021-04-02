@@ -3,7 +3,7 @@
         <CardToolbar :active="active" title="Titre" />
         <div class="card-body">
             <div
-                :class="`content ${type}`"
+                :class="`content ${type}` + (active ? ' active' : '')"
                 :oninput="updateContent"
                 :onfocus="focus"
                 contenteditable="true"
@@ -23,6 +23,7 @@ export default {
         active: Boolean,
         id: Number,
         type: String,
+        sub: Boolean,
     },
     components: {
         CardToolbar,
@@ -66,6 +67,7 @@ export default {
 
 .card.active {
     border: solid var(--pink) 1pt;
+    box-shadow: 0 0 30px 10px #00000020;
 }
 .content.title {
     text-align: center;
@@ -81,9 +83,13 @@ export default {
     transition: all 0.1s;
     box-shadow: 0 0 0 15px transparent;
 }
-.content:focus {
+.content.active {
     background-color: var(--light-pink);
     box-shadow: 0 0 0 15px var(--light-pink);
     outline: none;
+}
+.sub > * > * > .card {
+    border-left: none;
+    border-right: none;
 }
 </style>

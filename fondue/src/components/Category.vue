@@ -47,17 +47,16 @@ export default {
 .category.sub {
     padding-left: 0;
     padding-right: 0;
+    padding-bottom: 0;
+    padding-top: 15px;
 }
 .category-wrapper {
-    border: solid darkgrey 1pt;
+    box-shadow: 0px 0px 0px 1pt #00000030;
     margin: auto;
     margin-bottom: 25px;
     max-width: calc(var(--card-width) + var(--category-additional-width));
     background-color: #00000010;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
-}
-.card-toolbar {
-    margin-top: -1px;
 }
 </style>
