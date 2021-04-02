@@ -1,6 +1,9 @@
 # Macaron
+
 ### A card-based collaborative document editor
+
 ## Project structure
+
 <table>
   <tr>
     <th>Module name</th>
@@ -15,4 +18,4 @@
     <td>Frontend</td>
   </tr>
 </table>
-For now, the project is still in the early stages of developpement, backend developpement has not even started and frontend is being developped.
+For now, the project is still in the early stages of development, backend development has not even started and frontend is being developed.
