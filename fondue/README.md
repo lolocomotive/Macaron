@@ -20,6 +20,7 @@ The frontend UI of the Macaron project
 | More text card styles                                       | To do    |
 | Table card type                                             | To do    |
 | Ability to undo                                             | To do    |
+| Login screen                                                | To do    |
 
 ## Project setup
 
