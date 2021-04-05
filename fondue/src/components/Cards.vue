@@ -27,9 +27,9 @@
         <Icon @click="add" icon="far fa-plus-square" />
     </div>
 </template>
-<script>
-import Card from './Card';
-import Icon from './Icon';
+<script lang="ts">
+import Card from './Card.vue';
+import Icon from './Icon.vue';
 
 export default {
     name: 'Cards',
@@ -40,16 +40,16 @@ export default {
         isSubcategory: Boolean,
     },
     methods: {
-        changeActive(id) {
+        changeActive(id: Number) {
             this.$emit('changeActive', id);
         },
-        deleteCategory(id) {
+        deleteCategory(id: Number) {
             this.$emit('deleteCategory', id);
         },
-        changeContent(id, content) {
+        changeContent(id: Number, content: String) {
             this.$emit('changeContent', id, content);
         },
-        deleteItem(id) {
+        deleteItem(id: Number) {
             this.$emit('deleteItem', id);
         },
         add() {
@@ -57,7 +57,9 @@ export default {
         },
     },
     beforeCreate: function () {
-        this.$options.components.Category = require('./Category.vue').default;
+        if (this.$options.components != undefined) {
+            this.$options.components.Category = require('./Category.vue').default;
+        }
     },
 };
 </script>

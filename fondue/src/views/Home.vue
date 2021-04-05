@@ -16,27 +16,27 @@
     </div>
 </template>
 
-<script>
-import Nav from '@/components/Nav';
-import Cards from '@/components/Cards';
-import AddDialog from '@/components/AddDialog';
+<script lang="ts">
+import Nav from '@/components/Nav.vue';
+import Cards from '@/components/Cards.vue';
+import AddDialog from '@/components/AddDialog.vue';
 
 export default {
     name: 'Home',
     components: { Nav, Cards, AddDialog },
     data() {
         return {
-            content: [],
+            content: Array<any>(),
         };
     },
     computed: {
         getCards() {
-            return this.content.filter((el) => {
+            return this.content.filter((el: any) => {
                 return el.type === 'card';
             });
         },
         getCategories() {
-            return this.content.filter((el) => {
+            return this.content.filter((el: any) => {
                 return el.type === 'category';
             });
         },
@@ -140,7 +140,7 @@ export default {
         ];
     },
     methods: {
-        setActive(id, content) {
+        setActive(id: Number, content: Array<any>) {
             for (var element of content) {
                 if (element.type === 'card') {
                     element.active = element.id == id;
@@ -149,13 +149,13 @@ export default {
                 }
             }
         },
-        changeActive(id) {
+        changeActive(id: Number) {
             this.setActive(id, this.content);
         },
-        changeContent(id, content) {
+        changeContent(id: Number, content: any) {
             this.getElement(id, this.content).text = content;
         },
-        getElement(id, content) {
+        getElement(id: Number, content: Array<any>): any {
             for (var element of content) {
                 if (element.id == id) {
                     return element;
@@ -167,25 +167,25 @@ export default {
                 }
             }
         },
-        deleteElement(id, content) {
+        deleteElement(id: Number, content: Array<any>): any {
             for (var i in content) {
                 if (content[i].id == id) {
-                    return content.splice(i, 1);
+                    return content.splice(parseInt(i), 1);
                 } else if (content[i].type === 'category') {
                     var removedEl = this.deleteElement(id, content[i].content);
-                    if (!removedEl == -1) {
+                    if (!(parseInt(removedEl) == -1)) {
                         return removedEl;
                     }
                 }
             }
             return -1;
         },
-        deleteCategory(id) {
+        deleteCategory(id: Number) {
             if (confirm('Are you sure? This action cannot be undone')) {
                 this.deleteElement(id, this.content);
             }
         },
-        deleteItem(id) {
+        deleteItem(id: Number) {
             if (confirm('Are you sure? This action cannot be undone')) {
                 this.deleteElement(id, this.content);
             }

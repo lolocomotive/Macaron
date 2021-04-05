@@ -13,7 +13,7 @@
         </div>
     </div>
 </template>
-<script>
+<script lang="ts">
 import CardToolbar from './CardToolbar.vue';
 
 export default {
