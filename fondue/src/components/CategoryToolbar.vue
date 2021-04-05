@@ -1,5 +1,6 @@
 <template>
     <div :class="'category-toolbar' + (active ? ' active' : '')">
+        <Icon icon="fas fa-angle-down" @click="collapseCategory" />
         <div contenteditable class="category-toolbar-text">{{ title }}</div>
         <div class="category-toolbar-icons">
             <Icon icon="fas fa-trash" @click="deleteCategory" />
@@ -17,6 +18,9 @@ export default {
     methods: {
         deleteCategory() {
             this.$emit('deleteCategory');
+        },
+        collapseCategory() {
+            //TODO implement
         },
     },
     components: {

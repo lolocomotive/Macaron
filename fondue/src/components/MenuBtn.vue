@@ -1,13 +1,16 @@
 <template>
     <div id="menuBtn">
-        <!--TODO add icon -->
-        <img src="" alt="Menu" />
+        <Icon icon="fas fa-bars" />
         <div id="title">Macaron</div>
     </div>
 </template>
 <script>
+import Icon from './Icon';
 export default {
     name: 'MenuBtn',
+    components: {
+        Icon,
+    },
 };
 </script>
 <style scoped>
@@ -24,5 +27,8 @@ export default {
     border-left: solid white 1px;
     padding-left: 10px;
     margin-left: 10px;
+}
+.icon {
+    font-size: 1em;
 }
 </style>

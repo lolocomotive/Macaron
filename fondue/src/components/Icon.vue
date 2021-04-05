@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <button class="icon" :class="icon">{{ content }}</button>
-    </div>
+    <button :onclick="click" class="icon" :class="icon">
+        {{ content }}
+    </button>
 </template>
 <script>
 export default {
@@ -9,6 +9,11 @@ export default {
     props: {
         content: String,
         icon: String,
+    },
+    methods: {
+        click() {
+            document.activeElement.blur();
+        },
     },
 };
 </script>

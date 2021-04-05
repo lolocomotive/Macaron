@@ -1,13 +1,15 @@
 <template>
     <div id="present-container">
-        <!--TODO Add icon-->
-        <img src="" alt="" />
-        <div id="present-text">Présenter</div>
+        <div id="present-text"><Icon icon="fas fa-play" />Présenter</div>
     </div>
 </template>
 <script>
+import Icon from './Icon';
 export default {
     name: 'PresentBtn',
+    components: {
+        Icon,
+    },
 };
 </script>
 <style scoped>
@@ -19,6 +21,12 @@ export default {
     padding: 10px;
 }
 #present-text {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+}
+.icon {
+    font-size: 0.65em;
+    margin-right: 5px;
+    margin-bottom: -2px;
 }
 </style>
