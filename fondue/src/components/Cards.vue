@@ -24,15 +24,16 @@
                 :isSubcategory="isSubcategory"
             />
         </div>
+        <Icon @click="add" icon="far fa-plus-square" />
     </div>
 </template>
 <script>
 import Card from './Card';
-//import Category from './Category';
+import Icon from './Icon';
 
 export default {
     name: 'Cards',
-    components: { Card /*Category*/ },
+    components: { Card, Icon },
     props: {
         content: Object,
         cards: Object,
@@ -51,9 +52,27 @@ export default {
         deleteItem(id) {
             this.$emit('deleteItem', id);
         },
+        add() {
+            //TODO implement element adding
+        },
     },
     beforeCreate: function () {
         this.$options.components.Category = require('./Category.vue').default;
     },
 };
 </script>
+<style scoped>
+.icon {
+    display: block;
+    color: var(--purple);
+    margin: auto;
+    transition: all 0.1s;
+    font-size: 2em;
+}
+.icon:focus {
+    outline: auto black 2pt;
+    outline-offset: 10px;
+    box-shadow: none;
+    transform: scale(0.9);
+}
+</style>

@@ -12,15 +12,18 @@
                 :isSubcategory="false"
             />
         </div>
+        <AddDialog />
     </div>
 </template>
 
 <script>
 import Nav from '@/components/Nav';
 import Cards from '@/components/Cards';
+import AddDialog from '@/components/AddDialog';
+
 export default {
     name: 'Home',
-    components: { Nav, Cards },
+    components: { Nav, Cards, AddDialog },
     data() {
         return {
             content: [],
