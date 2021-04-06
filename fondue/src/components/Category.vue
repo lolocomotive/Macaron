@@ -17,9 +17,9 @@
         </div>
     </div>
 </template>
-<script lang="ts">
+<script>
 import Cards from './Cards.vue';
-import CategoryToolbar from './CategoryToolbar.vue';
+import CategoryToolbar from './CategoryToolbar';
 export default {
     name: 'Category',
     components: {
@@ -35,19 +35,19 @@ export default {
         title: String,
     },
     methods: {
-        changeActive(id: Number) {
+        changeActive(id) {
             this.$emit('changeActive', id);
         },
-        changeContent(id: Number, content: String) {
+        changeContent(id, content) {
             this.$emit('changeContent', id, content);
         },
         deleteCategory() {
             this.$emit('deleteCategory', this.id);
         },
-        passDeleteCategory(id: Number) {
+        passDeleteCategory(id) {
             this.$emit('deleteCategory', id);
         },
-        deleteItem(id: Number) {
+        deleteItem(id) {
             this.$emit('deleteItem', id);
         },
     },

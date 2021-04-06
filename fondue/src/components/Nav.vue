@@ -4,9 +4,9 @@
         <PresentBtn />
     </div>
 </template>
-<script lang="ts">
-import MenuBtn from './MenuBtn.vue';
-import PresentBtn from './PresentBtn.vue';
+<script>
+import MenuBtn from './MenuBtn';
+import PresentBtn from './PresentBtn';
 export default {
     name: 'Nav',
     components: {

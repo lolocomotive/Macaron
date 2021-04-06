@@ -3,7 +3,7 @@
         {{ content }}
     </button>
 </template>
-<script lang="ts">
+<script>
 export default {
     name: 'Icon',
     props: {
@@ -12,7 +12,7 @@ export default {
     },
     methods: {
         click() {
-            (document.activeElement as HTMLElement)?.blur();
+            document.activeElement.blur();
         },
     },
 };

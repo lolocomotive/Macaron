@@ -4,8 +4,8 @@
         <div id="title">Macaron</div>
     </div>
 </template>
-<script lang="ts">
-import Icon from './Icon.vue';
+<script>
+import Icon from './Icon';
 export default {
     name: 'MenuBtn',
     components: {
