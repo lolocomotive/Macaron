@@ -1,7 +1,9 @@
 <template>
     <div :class="'category-toolbar' + (active ? ' active' : '')">
         <Icon icon="fas fa-angle-down" @click="collapseCategory" />
-        <div contenteditable class="category-toolbar-text">{{ title }}</div>
+        <div @input="changeTitle" contenteditable class="category-toolbar-text">
+            {{ title }}
+        </div>
         <div class="category-toolbar-icons">
             <Icon icon="fas fa-trash" @click="deleteCategory" />
         </div>
@@ -21,6 +23,9 @@ export default {
         },
         collapseCategory() {
             //TODO implement
+        },
+        changeTitle() {
+            this.$emit('changeTitle', this.$el.children[1].innerText);
         },
     },
     components: {

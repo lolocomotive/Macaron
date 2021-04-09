@@ -16,6 +16,7 @@
                 @deleteCategory="deleteCategory"
                 @changeActive="changeActive"
                 @changeContent="changeContent"
+                @changeTitle="changeTitle"
                 v-else-if="item.type === 'category'"
                 :content="item.content"
                 :id="item.id"
@@ -49,11 +50,15 @@ export default {
         changeContent(id, content) {
             this.$emit('changeContent', id, content);
         },
+        changeTitle(id, title) {
+            this.$emit('changeTitle', id, title);
+        },
         deleteItem(id) {
             this.$emit('deleteItem', id);
         },
         add() {
             //TODO implement element adding
+            document.getElementsByClassName('bg')[0].classList.toggle('hidden');
         },
     },
     beforeCreate: function () {

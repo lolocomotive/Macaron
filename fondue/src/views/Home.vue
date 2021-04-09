@@ -7,6 +7,7 @@
                 @changeContent="changeContent"
                 @deleteItem="deleteItem"
                 @changeActive="changeActive"
+                @changeTitle="changeTitle"
                 :content="content"
                 :cards="getCardsComponent"
                 :isSubcategory="false"
@@ -154,6 +155,9 @@ export default {
         },
         changeContent(id, content) {
             this.getElement(id, this.content).text = content;
+        },
+        changeTitle(id, title) {
+            this.getElement(id, this.content).title = title;
         },
         getElement(id, content) {
             for (var element of content) {
