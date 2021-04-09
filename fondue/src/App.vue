@@ -22,9 +22,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
 #app {
     font-family: Lato, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: #2c3e50;
+    color: var(--purple);
 }
 
 #nav {
@@ -33,11 +31,11 @@
 
 #nav a {
     font-weight: bold;
-    color: #2c3e50;
+    color: var(--purple);
 }
 
 #nav a.router-link-exact-active {
-    color: #42b983;
+    color: var(--pink);
 }
 body {
     margin: 0;
