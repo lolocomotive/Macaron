@@ -1,5 +1,10 @@
 <template>
-    <div :style="`left:${tabid * settings.width}${settings.unit};`" class="tab">
+    <div
+        :style="`left: calc(${tabid * settings.width}${
+            settings.unit
+        } + (100vw / 2) - 13em);`"
+        class="tab"
+    >
         <h2
             :onclick="setActive"
             :style="`width:${settings.width}${settings.unit};`"
@@ -53,9 +58,15 @@ h2.active {
 }
 .content {
     position: relative;
-    display: none;
+    opacity: 0;
+    transform: scale(0.6);
+    transition: all 0.2s;
+    z-index: 1;
 }
 .active.content {
+    opacity: 1;
+    transform: scale(1);
     display: block;
+    z-index: 2;
 }
 </style>
