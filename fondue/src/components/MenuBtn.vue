@@ -15,20 +15,21 @@ export default {
 </script>
 <style scoped>
 #menuBtn {
-    background-color: var(--pink);
+    background-color: var(--foreground-tone);
     display: inline-block;
     padding: 10px;
-    color: white;
+    color: var(--background);
     font-size: var(--navbar-font-size);
     font-weight: 300;
 }
 #title {
     display: inline-block;
-    border-left: solid white 1px;
+    border-left: solid var(--background) 1px;
     padding-left: 10px;
     margin-left: 10px;
 }
 .icon {
+    color: var(--background);
     font-size: 1em;
 }
 </style>

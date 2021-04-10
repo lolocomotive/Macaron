@@ -17,7 +17,7 @@ export default {
 </script>
 <style scoped>
 #navbar {
-    background-color: var(--purple);
+    background-color: var(--background-tone);
     display: flex;
     justify-content: space-between;
     align-items: center;

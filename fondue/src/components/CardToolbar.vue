@@ -30,8 +30,8 @@ export default {
     transition: all 0.2s;
     overflow: hidden;
     opacity: 0;
-    color: white;
-    background-color: var(--purple);
+    color: var(--foreground-tone);
+    background-color: var(--background-tone);
     user-select: none;
     display: flex;
     justify-content: space-between;

@@ -52,25 +52,25 @@ export default {
 .card {
     margin: auto;
     max-width: var(--card-width);
-    background-color: white;
+    background-color: var(--background);
     margin-bottom: 15px;
-    border: solid #00000030 1pt;
+    border: solid var(--background-shade-3) 1pt;
 }
 .card:hover {
-    outline: solid #00000030 2pt;
+    outline: solid var(--background-shade-3) 2pt;
     outline-offset: -1pt;
 }
 .card.active:hover {
     outline-offset: -2pt;
-    outline-color: var(--pink);
+    outline-color: var(--background-tone);
 }
 .card-body {
     padding: 15px;
 }
 
 .card.active {
-    border: solid var(--pink) 1pt;
-    box-shadow: 0 0 30px 10px #00000020;
+    border: solid var(--background-tone) 1pt;
+    box-shadow: 0 0 30px 10px var(--background-shade-2);
 }
 .content.title {
     text-align: center;
@@ -87,8 +87,8 @@ export default {
     box-shadow: 0 0 0 15px transparent;
 }
 .content.active {
-    background-color: var(--light-pink);
-    box-shadow: 0 0 0 15px var(--light-pink);
+    background-color: var(var(--background-tone));
+    box-shadow: 0 0 0 15px var(var(--background-tone));
     outline: none;
 }
 .sub > * > * > .card {

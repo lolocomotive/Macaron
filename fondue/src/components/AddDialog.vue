@@ -66,13 +66,11 @@ export default {
                                         style="color:#000000A0;"
                                         icon="fas fa-align-justify"
                                     />
-
                                     <Icon
                                         class="option"
                                         style="color:red;"
                                         icon="fas fa-align-justify"
                                     />
-
                                     <Icon
                                         class="option"
                                         style="color:green;"
@@ -133,20 +131,20 @@ export default {
 }
 
 .fg {
-    background-color: white;
-    border: solid black 1pt;
+    background-color: var(--background);
+    border: solid var(--background-tone) 1pt;
     height: 15em;
     width: 30em;
     margin-top: 3em;
     transition: all 0.3s;
-    box-shadow: 0 0 60px 30px #00000030;
+    box-shadow: 0 0 60px 30px var(--background-shade-3);
 }
 .bg {
     opacity: 1;
     display: flex;
     align-items: baseline;
     justify-content: space-around;
-    background-color: #00000050;
+    background-color: var(--background-shade-5);
     position: fixed;
     top: 0;
     left: 0;
@@ -159,8 +157,12 @@ h1 {
 }
 .tab {
     transition: all 0.3s;
-    --focus-color: var(--pink);
-    --unfocus-color: var(--purple);
+    --focus-color: var(--foreground-tone);
+    --unfocus-color: var(--secondary);
+}
+.dark .tab {
+    --unfocus-color: var(--foreground-tone);
+    --focus-color: var(--secondary);
 }
 .grid {
     transition: all 0.3s;

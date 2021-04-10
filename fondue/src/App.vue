@@ -9,8 +9,11 @@
     --purple: #3d2645ff;
     --blue: #77b6eaff;
     --pink: #f4acb7ff;
-    --yellow: #f2f6d0ff;
+    --yellow: #f2e6d0ff;
     --green: #c5ebc3ff;
+
+    --light-green: #c5ebc330;
+
     --light-pink: #f4acb730;
     --light-purple: #3d264580;
 
@@ -18,11 +21,38 @@
     --category-additional-width: 50px;
 
     --navbar-font-size: 2em;
+
+    --secondary-dark: white;
+}
+.light {
+    --secondary: var(--purple);
+    --foreground: black;
+    --foreground-tone: var(--pink);
+    --background: white;
+    --background-tone: var(--purple);
+    --background-shade-3: #00000030;
+    --background-shade-2: #00000020;
+    --background-shade-1: #00000010;
+}
+.dark {
+    --secondary: var(--secondary-dark);
+    --foreground: white;
+    --foreground-tone: var(--pink);
+    --background: #10151a;
+    --background-tone: var(--purple);
+    --background-shade-5: #ffffff50;
+    --background-shade-3: #ffffff30;
+    --background-shade-2: #ffffff20;
+    --background-shade-1: #ffffff10;
+}
+body {
+    background-color: var(--background);
+    color: var(--foreground);
 }
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
 #app {
     font-family: Lato, Helvetica, Arial, sans-serif;
-    color: var(--purple);
+    color: var(--foreground);
 }
 
 #nav {
@@ -41,7 +71,7 @@ body {
     margin: 0;
 }
 ::selection {
-    background-color: var(--pink);
-    color: white;
+    background-color: var(--foreground-tone);
+    color: var(--background);
 }
 </style>

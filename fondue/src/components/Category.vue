@@ -74,11 +74,11 @@ export default {
     padding-top: 15px;
 }
 .category-wrapper {
-    box-shadow: 0px 0px 0px 1pt #00000030;
+    box-shadow: 0px 0px 0px 1pt var(--background-shade-3);
     margin: auto;
     margin-bottom: 25px;
     max-width: calc(var(--card-width) + var(--category-additional-width));
-    background-color: #00000010;
+    background-color: var(--background-shade-1);
     border-radius: 5px 5px 0 0;
     overflow: hidden;
 }

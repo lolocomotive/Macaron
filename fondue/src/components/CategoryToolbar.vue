@@ -40,17 +40,21 @@ export default {
     overflow: hidden;
     user-select: none;
     padding: 5px;
-    border-bottom: solid #00000030 1pt;
-    background-color: var(--light-purple);
+    border-bottom: solid var(--background-shade-3) 1pt;
+    background-color: var(--background-tone);
     display: flex;
 }
 .category-toolbar-text {
     flex: 1;
 }
 .category-toolbar:focus-within {
-    color: white;
-    background-color: var(--purple);
-    outline: solid var(--pink) 2pt;
+    color: var(--background);
+    background-color: var(--foreground);
+    outline: solid var(--foreground-tone) 2pt;
+}
+.dark .category-toolbar:focus-within {
+    color: var(--foreground);
+    background-color: var(--background);
 }
 .category-toolbar-text:focus {
     outline: none;

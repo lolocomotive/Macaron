@@ -69,13 +69,13 @@ export default {
 <style scoped>
 .icon {
     display: block;
-    color: var(--purple);
+    color: var(--secondary);
     margin: auto;
     transition: all 0.1s;
     font-size: 2em;
 }
 .icon:focus {
-    outline: auto black 2pt;
+    outline: auto var(--secondary) 2pt;
     outline-offset: 10px;
     box-shadow: none;
     transform: scale(0.9);
