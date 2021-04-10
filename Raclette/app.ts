@@ -60,3 +60,4 @@ http.createServer(function (req: Http2ServerRequest, res: Http2ServerResponse) {
         res.end(JSON.stringify(response));
     });
 }).listen(5000);
+console.log('Listening on port 5000');
