@@ -1,24 +1,28 @@
 <template>
-    <div id="login-form">
+    <div id="register-form">
         <div id="form">
             <div id="form-content">
+                <div id="form-email-label">Email address:</div>
+                <input type="text" id="form-email" />
                 <div id="form-uname-label">Username:</div>
                 <input type="text" id="form-uname" />
                 <div id="form-pwd-label">Password:</div>
                 <input type="password" id="form-pwd" />
+                <div id="form-pwd2-label">Retype password:</div>
+                <input type="password" id="form-pwd2" />
             </div>
-            <button @click="login">Log in</button>
-            <router-link to="/register">
-                Don't have an account? Register now
+            <button @click="register">Register</button>
+            <router-link to="/login">
+                Already have an account? Log in
             </router-link>
         </div>
     </div>
 </template>
 <script>
 export default {
-    name: 'Login',
+    name: 'Register',
     methods: {
-        async login() {
+        async register() {
             var data = {
                 username: document.getElementById('form-uname').value,
                 password: document.getElementById('form-pwd').value,
@@ -82,15 +86,28 @@ input {
     font-size: 1em;
     color: inherit;
     border: none;
-    box-shadow: 0 8px 0 white, 0 10px 0 var(--purple);
+    box-shadow: 0 8px 0 var(--background), 0 10px 0 var(--foreground-tone);
     transition: all 0.3s;
     padding: 3px;
     flex: 1;
     margin-left: var(--spacing);
     padding-left: var(--spacing);
+    background-color: var(--background);
+}
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active {
+    box-shadow: 0 8px 0 var(--background), 0 10px 0 var(--foreground-tone),
+        0 0 0 30px var(--background) inset !important;
+    -webkit-text-fill-color: var(--foreground) !important;
+}
+input:-webkit-autofill:focus {
+    box-shadow: 0 2px 0 var(--background-tone), 0 0px 0 var(--foreground-tone),
+        0 0 0 30px var(--background) inset !important;
 }
 input:focus {
-    box-shadow: 0 2px 0 var(--pink), 0 0px 0 var(--purple);
+    box-shadow: 0 2px 0 var(--background-tone), 0 0px 0 var(--foreground-tone);
     outline: none;
 }
 .entry-wrapper {
@@ -114,10 +131,11 @@ input:focus {
 button {
     margin-top: 35px;
     margin-bottom: 15px;
+    color: var(--foreground);
 }
 #form-content {
     display: grid;
-    grid-template-columns: 1fr 10fr;
+    grid-template-columns: 1fr 3fr;
     grid-row-gap: 1em;
 }
 a {

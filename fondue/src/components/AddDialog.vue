@@ -139,6 +139,7 @@ export default {
     transition: all 0.3s;
     box-shadow: 0 0 60px 30px var(--background-shade-3);
 }
+
 .bg {
     opacity: 1;
     display: flex;
@@ -152,18 +153,22 @@ export default {
     width: 100vw;
     transition: all 0.3s;
 }
+
 h1 {
     text-align: center;
 }
+
 .tab {
     transition: all 0.3s;
     --focus-color: var(--foreground-tone);
     --unfocus-color: var(--secondary);
 }
+
 .dark .tab {
     --unfocus-color: var(--foreground-tone);
     --focus-color: var(--secondary);
 }
+
 .grid {
     transition: all 0.3s;
     display: flex;

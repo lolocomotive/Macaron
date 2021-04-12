@@ -35,13 +35,13 @@ export default {
 </script>
 <style scoped>
 .category-toolbar {
-    color: white;
+    color: var(--background);
     transition: all 0.2s;
     overflow: hidden;
     user-select: none;
     padding: 5px;
     border-bottom: solid var(--background-shade-3) 1pt;
-    background-color: var(--background-tone);
+    background-color: var(--foreground-tone);
     display: flex;
 }
 .category-toolbar-text {
@@ -49,7 +49,7 @@ export default {
 }
 .category-toolbar:focus-within {
     color: var(--background);
-    background-color: var(--foreground);
+    background-color: var(--background-tone-1);
     outline: solid var(--foreground-tone) 2pt;
 }
 .dark .category-toolbar:focus-within {

@@ -1,6 +1,5 @@
 <template>
     <div class="home">
-        <Nav />
         <div id="body">
             <Cards
                 @deleteCategory="deleteCategory"
@@ -8,6 +7,7 @@
                 @deleteItem="deleteItem"
                 @changeActive="changeActive"
                 @changeTitle="changeTitle"
+                @addCard="addCard"
                 :content="content"
                 :cards="getCardsComponent"
                 :isSubcategory="false"
@@ -18,13 +18,12 @@
 </template>
 
 <script>
-import Nav from '@/components/Nav';
 import Cards from '@/components/Cards';
 import AddDialog from '@/components/AddDialog';
 
 export default {
     name: 'Home',
-    components: { Nav, Cards, AddDialog },
+    components: { Cards, AddDialog },
     data() {
         return {
             content: [],
@@ -46,6 +45,7 @@ export default {
         },
     },
     created() {
+        console.log(this);
         this.content = [
             {
                 type: 'card',
@@ -141,6 +141,18 @@ export default {
         ];
     },
     methods: {
+        addCard(id) {
+            console.log(id);
+            let c = this.getElement(id, this.content);
+            console.log(c);
+            c.content.push({
+                id: Math.random(),
+                text: 'Helo',
+                type: 'card',
+                cardType: 'title',
+            });
+        },
+
         setActive(id, content) {
             for (var element of content) {
                 if (element.type === 'card') {
@@ -150,15 +162,19 @@ export default {
                 }
             }
         },
+
         changeActive(id) {
             this.setActive(id, this.content);
         },
+
         changeContent(id, content) {
             this.getElement(id, this.content).text = content;
         },
+
         changeTitle(id, title) {
             this.getElement(id, this.content).title = title;
         },
+
         getElement(id, content) {
             for (var element of content) {
                 if (element.id == id) {
@@ -171,6 +187,7 @@ export default {
                 }
             }
         },
+
         deleteElement(id, content) {
             for (var i in content) {
                 if (content[i].id == id) {
@@ -184,11 +201,13 @@ export default {
             }
             return -1;
         },
+
         deleteCategory(id) {
             if (confirm('Are you sure? This action cannot be undone')) {
                 this.deleteElement(id, this.content);
             }
         },
+
         deleteItem(id) {
             if (confirm('Are you sure? This action cannot be undone')) {
                 this.deleteElement(id, this.content);

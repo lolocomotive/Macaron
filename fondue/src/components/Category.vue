@@ -8,6 +8,7 @@
         />
         <div :class="'category' + (isSubcategory ? ' sub' : '')">
             <Cards
+                @addCard="addCard"
                 @deleteItem="deleteItem"
                 @deleteCategory="passDeleteCategory"
                 @changeTitle="passChangeTitle"
@@ -57,6 +58,12 @@ export default {
         },
         deleteItem(id) {
             this.$emit('deleteItem', id);
+        },
+        addCard(id) {
+            if (id == undefined) {
+                id = this.id;
+            }
+            this.$emit('addCard', id);
         },
     },
 };

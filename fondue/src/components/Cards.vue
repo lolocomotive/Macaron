@@ -17,6 +17,7 @@
                 @changeActive="changeActive"
                 @changeContent="changeContent"
                 @changeTitle="changeTitle"
+                @addCard="passAddCard"
                 v-else-if="item.type === 'category'"
                 :content="item.content"
                 :id="item.id"
@@ -56,9 +57,11 @@ export default {
         deleteItem(id) {
             this.$emit('deleteItem', id);
         },
+        passAddCard(id) {
+            this.$emit('addCard', id);
+        },
         add() {
-            //TODO implement element adding
-            document.getElementsByClassName('bg')[0].classList.toggle('hidden');
+            this.$emit('addCard');
         },
     },
     beforeCreate: function () {

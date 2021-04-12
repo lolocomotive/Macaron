@@ -1,7 +1,7 @@
 <template>
     <div id="menuBtn">
         <Icon icon="fas fa-bars" />
-        <div id="title">Macaron</div>
+        <router-link to="/" id="title">Macaron</router-link>
     </div>
 </template>
 <script>
@@ -15,7 +15,7 @@ export default {
 </script>
 <style scoped>
 #menuBtn {
-    background-color: var(--foreground-tone);
+    background-color: var(--pink);
     display: inline-block;
     padding: 10px;
     color: var(--background);
@@ -23,6 +23,8 @@ export default {
     font-weight: 300;
 }
 #title {
+    color: var(--background);
+    text-decoration: none;
     display: inline-block;
     border-left: solid var(--background) 1px;
     padding-left: 10px;

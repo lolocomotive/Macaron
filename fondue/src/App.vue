@@ -1,9 +1,18 @@
 <template>
     <div>
+        <Nav />
         <router-view />
     </div>
 </template>
-
+<script>
+import Nav from '@/components/Nav';
+export default {
+    name: 'App',
+    components: {
+        Nav,
+    },
+};
+</script>
 <style>
 :root {
     --purple: #3d2645ff;
@@ -27,9 +36,11 @@
 .light {
     --secondary: var(--purple);
     --foreground: black;
-    --foreground-tone: var(--pink);
+    --foreground-tone: var(--purple);
     --background: white;
-    --background-tone: var(--purple);
+    --background-tone: var(--pink);
+    --background-tone-1: #23062cc0;
+    --background-shade-5: #00000050;
     --background-shade-3: #00000030;
     --background-shade-2: #00000020;
     --background-shade-1: #00000010;
@@ -40,6 +51,7 @@
     --foreground-tone: var(--pink);
     --background: #10151a;
     --background-tone: var(--purple);
+    --background-tone-1: #ffffffc0;
     --background-shade-5: #ffffff50;
     --background-shade-3: #ffffff30;
     --background-shade-2: #ffffff20;
@@ -60,10 +72,12 @@ body {
 }
 
 #nav a {
-    font-weight: bold;
-    color: var(--purple);
+    color: var(--foreground-tone);
 }
 
+a {
+    color: var(--foreground-tone);
+}
 #nav a.router-link-exact-active {
     color: var(--pink);
 }
