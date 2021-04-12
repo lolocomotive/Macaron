@@ -24,7 +24,7 @@ export default {
                 password: document.getElementById('form-pwd').value,
             };
             console.log(data);
-            fetch('http://localhost:5000', {
+            fetch('http://localhost:5000/login', {
                 method: 'POST',
                 body: JSON.stringify(data),
             })
