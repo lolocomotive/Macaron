@@ -1,4 +1,7 @@
 import { Http2ServerRequest, Http2ServerResponse } from 'node:http2';
+import { QueryResult } from 'pg';
+import bcrypt from 'bcrypt';
+import { pwd_read } from './db_users/pwd_read';
 
 var http = require('http');
 
@@ -11,7 +14,7 @@ http.createServer(function (req: Http2ServerRequest, res: Http2ServerResponse) {
     let responseRaw: any[] = [];
     req.on('data', (chunk) => {
         responseRaw.push(chunk);
-    }).on('end', () => {
+    }).on('end', async () => {
         var body = Buffer.concat(responseRaw);
         // body.toString = '{"username":"lolocomotive","password":"password"}'
         let credentials = JSON.parse(body.toString());
@@ -28,36 +31,47 @@ http.createServer(function (req: Http2ServerRequest, res: Http2ServerResponse) {
         };
 
         //! If the user exists
-        //TODO Change this to an actual database query
+        await pwd_read.query(
+            `select * from users where username='${credentials.username}'`,
+            (err: Error, results: QueryResult) => {
+                if (err) {
+                    throw err;
+                }
+                if (results.rowCount > 0) {
+                    console.log('User exists');
+                    //! If the password is correct
 
-        if (credentials.username === 'lolocomotive') {
-            //! If the password is correct
-            //TODO Use a password hash and a database query
-
-            if (credentials.password === 'password') {
-                response.status = 'authorized';
-            } else {
-                response.status = 'unauthorized';
-                response.message = 'Wrong password!';
+                    if (
+                        bcrypt.compareSync(
+                            credentials.password,
+                            results.rows[0].pwd_hash
+                        )
+                    ) {
+                        response.status = 'authorized';
+                    } else {
+                        response.status = 'unauthorized';
+                        response.message = 'Wrong password!';
+                    }
+                } else {
+                    response.status = 'unauthorized';
+                    response.message = 'No such user';
+                }
+                switch (response.status) {
+                    case 'authorized':
+                        console.log('User has been authorized');
+                        break;
+                    case 'unauthorized':
+                        console.log(
+                            'The access has been denied to the user for reason:',
+                            response.message
+                        );
+                        break;
+                    default:
+                        console.log('UNKNOWN STATUS!');
+                }
+                res.end(JSON.stringify(response));
             }
-        } else {
-            response.status = 'unauthorized';
-            response.message = 'No such user';
-        }
-        switch (response.status) {
-            case 'authorized':
-                console.log('User has been authorized');
-                break;
-            case 'unauthorized':
-                console.log(
-                    'The access has been denied to the user for reason:',
-                    response.message
-                );
-                break;
-            default:
-                console.log('UNKNOWN STATUS!');
-        }
-        res.end(JSON.stringify(response));
+        );
     });
 }).listen(5000);
 console.log('Listening on port 5000');
