@@ -29,6 +29,7 @@ export default {
             content: [],
         };
     },
+
     computed: {
         getCards() {
             return this.content.filter((el) => {
@@ -44,6 +45,7 @@ export default {
             return Cards;
         },
     },
+
     created() {
         console.log(this);
         this.content = [
@@ -143,13 +145,16 @@ export default {
     methods: {
         addCard(id) {
             console.log(id);
+            if(id == undefined){
+                this.content.push({id: Math.random(), text: 'Title Card',type: 'card', cardType: 'title'})
+            }
             let c = this.getElement(id, this.content);
             console.log(c);
             c.content.push({
                 id: Math.random(),
-                text: 'Helo',
+                text: 'Some text',
                 type: 'card',
-                cardType: 'title',
+                cardType: 'text',
             });
         },
 
