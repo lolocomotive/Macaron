@@ -24,8 +24,6 @@ export default {
     padding: 5px;
     border-radius: 3px;
     color: white;
-    display:inline;
-    text-align:center;
 }
 .icon:hover {
     transform: scale(1.1);
