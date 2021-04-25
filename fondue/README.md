@@ -8,7 +8,7 @@ The frontend UI of the Macaron project
 | ----------------------------------------------------------- | -------- |
 | Synchronized JS object structure and edit mode card display | Done     |
 | Ability to remove cards                                     | Done     |
-| Ability to add cards                                        | To do    |
+| Ability to add cards                                        | In progress|
 | Ability to collapse categories                              | To do    |
 | Ability to move cards                                       | To do    |
 | Ability to drag and drop cards                              | To do    |
@@ -20,7 +20,7 @@ The frontend UI of the Macaron project
 | More text card styles                                       | To do    |
 | Table card type                                             | To do    |
 | Ability to undo                                             | To do    |
-| Login screen                                                | To do    |
+| Login screen                                                | In progress|
 
 ## Project setup
 

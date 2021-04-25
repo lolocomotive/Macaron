@@ -37,6 +37,7 @@ export default {
             addDialogShown: false,
         };
     },
+
     computed: {
         getCards() {
             return this.content.filter((el) => {
@@ -52,6 +53,7 @@ export default {
             return Cards;
         },
     },
+
     created() {
         console.log(this);
         this.content = [
@@ -155,12 +157,12 @@ export default {
             console.log(c);
             c.content.push({
                 id: Math.random(),
-                text: 'Helo',
+                text: 'Some text',
                 type: 'card',
                 cardType: 'title',
-            }); */
             this.addLoc = id;
             this.addDialogShown = true;
+            }); */
         },
         add(item) {
             this.getElement(this.addLoc, this.content).content.push(item);
