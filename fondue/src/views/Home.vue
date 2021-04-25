@@ -13,7 +13,13 @@
                 :isSubcategory="false"
             />
         </div>
-        <AddDialog />
+        <AddDialog
+            :location="addLoc"
+            :class="'bg' + (addDialogShown ? '' : ' hidden')"
+            @click="closeAddMenu"
+            @close="addDialogShown = false"
+            @add="add"
+        />
     </div>
 </template>
 
@@ -27,6 +33,8 @@ export default {
     data() {
         return {
             content: [],
+            addLoc: 0,
+            addDialogShown: false,
         };
     },
     computed: {
@@ -142,7 +150,7 @@ export default {
     },
     methods: {
         addCard(id) {
-            console.log(id);
+            /* console.log(id);
             let c = this.getElement(id, this.content);
             console.log(c);
             c.content.push({
@@ -150,7 +158,18 @@ export default {
                 text: 'Helo',
                 type: 'card',
                 cardType: 'title',
-            });
+            }); */
+            this.addLoc = id;
+            this.addDialogShown = true;
+        },
+        add(item) {
+            this.getElement(this.addLoc, this.content).content.push(item);
+        },
+
+        closeAddMenu() {
+            if (event.target.classList[0] === 'bg') {
+                this.addDialogShown = false;
+            }
         },
 
         setActive(id, content) {

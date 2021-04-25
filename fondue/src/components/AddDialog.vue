@@ -1,33 +1,92 @@
 <template>
     <div>
-        <div @click="click" class="bg hidden">
-            <div class="fg">
-                <h1>Add card</h1>
-                <div class="tabs">
-                    <Tab
-                        v-for="tab in tabs"
-                        @setActive="setActive"
-                        :settings="tabSettings"
-                        :tabid="tab.id"
-                        :title="tab.title"
-                        :active="tab.active"
-                        :key="tab.id"
-                        :is="tab.content"
-                    >
-                        <component :is="tab.content" />
-                    </Tab>
-                </div>
+        <!-- TODO: Add text under icons -->
+        <div class="fg">
+            <div class="tabs">
+                <h1>Add something</h1>
+                <details>
+                    <summary>Recommended</summary>
+                    <div class="grid">
+                        <Icon
+                            @click="add('stdText')"
+                            class="option"
+                            style="color: #000000a0"
+                            icon="fas fa-align-justify"
+                        />
+                        <Icon
+                            @click="add('stdCategory')"
+                            class="option"
+                            style="color: black"
+                            icon="fas fa-square"
+                        />
+                    </div>
+                </details>
+                <details>
+                    <summary>Basic</summary>
+                    <div class="grid">
+                        <Icon
+                            @click="add('stdText')"
+                            class="option"
+                            style="color: #000000a0"
+                            icon="fas
+                        fa-align-justify"
+                        />
+                        <Icon
+                            class="option"
+                            style="color: red"
+                            icon="fas fa-align-justify"
+                        />
+                        <Icon
+                            class="option"
+                            style="color: green"
+                            icon="fas fa-align-justify"
+                        />
+                        <Icon
+                            class="option"
+                            style="color: var(--purple)"
+                            icon="fas fa-align-justify"
+                        />
+                    </div>
+                </details>
+                <details>
+                    <summary>Media</summary>
+                    <div class="grid">
+                        <Icon
+                            class="option"
+                            style="color: #000000a0"
+                            icon="fas fa-image"
+                        />
+                        <Icon
+                            class="option"
+                            style="color: #000000a0"
+                            icon="fas fa-video"
+                        />
+                        <Icon
+                            class="option"
+                            style="color: #000000a0"
+                            icon="fas fa-code"
+                        />
+                    </div>
+                </details>
+                <details>
+                    <summary>Miscellaneous</summary>
+                    <div class="grid">
+                        <Icon class="option" icon="fas fa-square" />
+                    </div>
+                </details>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import Tab from './Tab.vue';
 import Icon from './Icon.vue';
 export default {
     name: 'AddDialog',
-    components: { Tab, Icon },
+    components: { Icon },
+    props: {
+        location: Number,
+    },
     methods: {
         setActive(id) {
             for (var i in this.tabs) {
@@ -38,91 +97,50 @@ export default {
                 }
             }
         },
-        click() {
-            if (event.target.classList[0] === 'bg') {
-                document
-                    .getElementsByClassName('bg')[0]
-                    .classList.toggle('hidden');
+        add(type) {
+            let obj = {};
+            switch (type) {
+                case 'stdText':
+                    obj.type = 'card';
+                    obj.cardType = 'text';
+                    obj.text = 'Insert text here';
+                    obj.id = Math.random();
+                    break;
+                case 'stdCategory':
+                    obj.type = 'category';
+                    obj.content = [
+                        {
+                            type: 'card',
+                            cardType: 'title',
+                            text: 'Insert text here',
+                        },
+                    ];
+                    obj.cardType = 'text';
+                    obj.text = 'Insert text here';
+                    obj.id = Math.random();
+                    break;
+                default:
+                    alert('An error has occured');
+                    break;
             }
-        },
-    },
-    data() {
-        return {
-            tabSettings: {
-                width: 100,
 
-                height: 25,
-                unit: 'px',
-            },
-            tabs: [
-                {
-                    title: 'Texte',
-                    content: {
-                        render() {
-                            return (
-                                <div class="grid">
-                                    <Icon
-                                        class="option"
-                                        style="color:#000000A0;"
-                                        icon="fas fa-align-justify"
-                                    />
-                                    <Icon
-                                        class="option"
-                                        style="color:red;"
-                                        icon="fas fa-align-justify"
-                                    />
-                                    <Icon
-                                        class="option"
-                                        style="color:green;"
-                                        icon="fas fa-align-justify"
-                                    />
-                                    <Icon
-                                        class="option"
-                                        style="color:var(--purple);"
-                                        icon="fas fa-align-justify"
-                                    />
-                                </div>
-                            );
-                        },
-                    },
-                    id: 0,
-                    active: true,
-                },
-                {
-                    title: 'Médias',
-                    content: {
-                        render() {
-                            return (
-                                <div class="grid">
-                                    <Icon
-                                        class="option"
-                                        style="color:#000000A0;"
-                                        icon="fas fa-image"
-                                    />
-                                    <Icon
-                                        class="option"
-                                        style="color:#000000A0;"
-                                        icon="fas fa-video"
-                                    />
-                                    <Icon
-                                        class="option"
-                                        style="color:#000000A0;"
-                                        icon="fas fa-code"
-                                    />
-                                </div>
-                            );
-                        },
-                    },
-                    id: 1,
-                    active: false,
-                },
-            ],
-        };
+            this.$emit('add', obj);
+            this.$emit('close');
+        },
     },
 };
 </script>
 
 <style scoped>
+summary {
+    user-select: none;
+    cursor: pointer;
+}
+details {
+    outline: solid black 1pt;
+    margin-top: 20px;
+    padding: 10px;
+}
 .hidden {
     /* display: none !important; */
     user-select: none !important;
@@ -133,9 +151,9 @@ export default {
 .fg {
     background-color: var(--background);
     border: solid var(--background-tone) 1pt;
-    height: 15em;
     width: 30em;
     margin-top: 3em;
+    padding: 2em;
     transition: all 0.3s;
     box-shadow: 0 0 60px 30px var(--background-shade-3);
 }
@@ -156,12 +174,13 @@ export default {
 
 h1 {
     text-align: center;
+    margin-top: 0;
 }
 
 .tab {
     transition: all 0.3s;
-    --focus-color: var(--foreground-tone);
-    --unfocus-color: var(--secondary);
+    --focus-color: var(--background-tone);
+    --unfocus-color: var(--foreground-tone);
 }
 
 .dark .tab {
@@ -172,8 +191,14 @@ h1 {
 .grid {
     transition: all 0.3s;
     display: flex;
-    justify-content: space-around;
-    width: calc(100% + 5em);
+    justify-content: left;
+}
+.grid > * {
+    margin: 10px;
+}
+.icon {
+    color: var(--foreground-tone);
+    font-size: 2em;
 }
 </style>
 <style>
