@@ -160,9 +160,9 @@ export default {
                 text: 'Some text',
                 type: 'card',
                 cardType: 'title',
+            }); */
             this.addLoc = id;
             this.addDialogShown = true;
-            }); */
         },
         add(item) {
             this.getElement(this.addLoc, this.content).content.push(item);
