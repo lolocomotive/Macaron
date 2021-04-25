@@ -26,7 +26,9 @@
                 :isSubcategory="isSubcategory"
             />
         </div>
-        <Icon @click="add" icon="far fa-plus-square" />
+        <div class="addBtnWrapper">
+            <Icon @click="add" icon="far fa-plus-square" />
+        </div>
     </div>
 </template>
 <script>
@@ -82,5 +84,9 @@ export default {
     outline-offset: 10px;
     box-shadow: none;
     transform: scale(0.9);
+}
+.addBtnWrapper {
+    display: flex;
+    justify-content: center;
 }
 </style>
