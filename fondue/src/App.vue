@@ -88,4 +88,33 @@ body {
     background-color: var(--foreground-tone);
     color: var(--background);
 }
+*[tooltip]:hover::after {
+    width: max-content;
+    content: attr(tooltip);
+    background-color: var(--background);
+    color: var(--foreground-tone);
+    position: fixed;
+    font-family: Lato, Helvetica, Arial, sans-serif;
+    font-size: 12pt;
+    display: block;
+    padding: 5px;
+    text-align: center;
+    max-width: 300px;
+    border: solid var(--background-tone) 1pt;
+    font-weight: 400;
+    animation-name: appear;
+    animation-duration: 0.7s;
+    left: 100%;
+}
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 </style>

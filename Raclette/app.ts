@@ -1,40 +1,35 @@
-import { Http2ServerRequest, Http2ServerResponse } from "node:http2";
-import { QueryResult } from "pg";
-import bcrypt from "bcrypt";
-import { pwd_read } from "./db_users/pwd_read";
-import { add_user } from "./db_users/add_user";
+import { Http2ServerRequest, Http2ServerResponse } from 'node:http2';
+import { QueryResult } from 'pg';
+import bcrypt from 'bcrypt';
+import { pwd_read } from './db_users/pwd_read';
+import { add_user } from './db_users/add_user';
 
-var http = require("http");
+var http = require('http');
 /*
-localhost:5000/login
+Localhost:5000
 |-> Login
-
-localhost:5000/register
 |-> Register
+|-> Query
+
 
 etc...
 */
-http.createServer(function (
-    req: Http2ServerRequest,
-    res: Http2ServerResponse
-) {
+http.createServer(function (req: Http2ServerRequest, res: Http2ServerResponse) {
     res.writeHead(200, {
-        "Content-Type": "text/json",
-        "Access-Control-Allow-Origin": "*",
+        'Content-Type': 'text/json',
+        'Access-Control-Allow-Origin': '*',
     });
 
-                
-                    
-                    let responseRaw: any[] = [];, 10
+    let responseRaw: any[] = [];
     switch (req.url) {
-        case "/login":
+        case '/login':
             /*
             !    Handle Login
              */
 
-            req.on("data", (chunk) => {
+            req.on('data', (chunk) => {
                 responseRaw.push(chunk);
-            }).on("end", async () => {
+            }).on('end', async () => {
                 var body = Buffer.concat(responseRaw);
                 let credentials: {
                     username: String;
@@ -48,8 +43,8 @@ http.createServer(function (
                         '"'
                 );
                 let response: { status: string; message: string } = {
-                    status: "",
-                    message: "",
+                    status: '',
+                    message: '',
                 };
 
                 //! If the user exists
@@ -67,27 +62,27 @@ http.createServer(function (
                                     results.rows[0].pwd_hash
                                 )
                             ) {
-                                response.status = "authorized";
+                                response.status = 'authorized';
                             } else {
-                                response.status = "unauthorized";
-                                response.message = "Wrong password!";
+                                response.status = 'unauthorized';
+                                response.message = 'Wrong password!';
                             }
                         } else {
-                            response.status = "unauthorized";
-                            response.message = "No such user";
+                            response.status = 'unauthorized';
+                            response.message = 'No such user';
                         }
                         switch (response.status) {
-                            case "authorized":
-                                console.log("User has been authorized");
+                            case 'authorized':
+                                console.log('User has been authorized');
                                 break;
-                            case "unauthorized":
+                            case 'unauthorized':
                                 console.log(
-                                    "The access has been denied to the user for reason:",
+                                    'The access has been denied to the user for reason:',
                                     response.message
                                 );
                                 break;
                             default:
-                                console.log("UNKNOWN STATUS!");
+                                console.log('UNKNOWN STATUS!');
                         }
                         res.end(JSON.stringify(response));
                     }
@@ -95,13 +90,13 @@ http.createServer(function (
             });
 
             break;
-        case "/register":
+        case '/register':
             //1 Créer le hash
             //2 Faire la requête SQL
             //3 Renvoyer un message de confirmation au client
-            req.on("data", (chunk) => {
+            req.on('data', (chunk) => {
                 responseRaw.push(chunk);
-            }).on("end", async () => {
+            }).on('end', async () => {
                 var body = Buffer.concat(responseRaw);
                 let credentials: {
                     username: String;
@@ -119,12 +114,10 @@ http.createServer(function (
                         credentials.username
                     }','${bcrypt.hashSync(credentials.password, 10)}'`
                 );
-            }
-            
-
+            });
             break;
         default:
-            res.end(JSON.stringify({ message: "Invalid request URL" }));
+            res.end(JSON.stringify({ message: 'Invalid request URL' }));
     }
 }).listen(5000);
-console.log("Listening on port 5000");
+console.log('Listening on port 5000');

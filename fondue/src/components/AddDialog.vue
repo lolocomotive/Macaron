@@ -12,12 +12,14 @@
                             class="option"
                             style="color: #000000a0"
                             icon="fas fa-align-justify"
+                            tooltip="Normal text"
                         />
                         <Icon
                             @click="add('stdCategory')"
                             class="option"
                             style="color: black"
                             icon="fas fa-square"
+                            tooltip="Category"
                         />
                     </div>
                 </details>
