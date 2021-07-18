@@ -1,0 +1,39 @@
+{
+    "dialogs": {
+        "add": {
+            "basic": "De base",
+            "category": "Catégorie",
+            "media": "Médias",
+            "misc": "Divers",
+            "recommended": "conseillé",
+            "stdText": "Texte normal",
+            "title": "Ajoute quelque chose"
+        }
+    },
+    "error": "Une erreur est survenue!",
+    "login": "Connexion",
+    "message": "bonjour i18n !!",
+    "messages": {
+        "deleteConfirmation": "Êtes-vous sûr? Cette action ne peut pas être annulée!"
+    },
+    "navbar": {
+        "present": "Cadeau"
+    },
+    "placeholders": {
+        "card1": "Carte 1",
+        "card2": "Carte 2",
+        "card3": "Carte 3",
+        "card4": "Carte 4",
+        "card5": "Carte 5",
+        "card6": "Carte 6",
+        "category1": "Catégorie 1",
+        "category2": "Catégorie 2",
+        "category3": "Catégorie 3",
+        "insertTextHere": "Insérer du texte ici",
+        "randomtext1": "Lorem ipsum",
+        "randomtext2": "Dolor sit amet",
+        "randomtext3": "Consectetur",
+        "title": "Titre"
+    },
+    "register": "S'inscrire"
+}

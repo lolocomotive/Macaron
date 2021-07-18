@@ -14,11 +14,20 @@
 <script>
 import MenuBtn from './MenuBtn';
 import PresentBtn from './PresentBtn';
+import { useI18n } from 'vue-i18n';
+
 export default {
     name: 'Nav',
     components: {
         MenuBtn,
         PresentBtn,
+    },
+    setup() {
+        const { t } = useI18n({
+            inheritLocale: true,
+            useScope: 'local',
+        });
+        return { t };
     },
     computed: {
         isProjectPage() {
@@ -28,10 +37,10 @@ export default {
             let title = '';
             switch (this.$route.name) {
                 case 'Login':
-                    title = 'Log in';
+                    title = this.t('login');
                     break;
                 case 'Register':
-                    title = 'Register';
+                    title = this.t('register');
                     break;
             }
             return title;

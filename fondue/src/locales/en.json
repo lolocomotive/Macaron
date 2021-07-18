@@ -1,0 +1,39 @@
+{
+  "message": "hello i18n !!",
+  "dialogs": {
+    "add": {
+      "title": "Add something",
+      "recommended": "Recommended",
+      "stdText": "Normal text",
+      "category": "Category",
+      "basic": "Basic",
+      "media": "Media",
+      "misc": "Miscellaneous"
+    }
+  },
+  "placeholders": {
+    "insertTextHere": "Insert text here",
+    "title": "Title",
+    "category1": "Category 1",
+    "card1": "Card 1",
+    "card2": "Card 2",
+    "card3": "Card 3",
+    "category2": "Category 2",
+    "category3": "Category 3",
+    "randomtext1": "Lorem ipsum",
+    "randomtext2": "Dolor sit amet",
+    "randomtext3": "Consectetur",
+    "card4": "Card 4",
+    "card5": "Card 5",
+    "card6": "Card 6"
+  },
+  "error": "An error has occured!",
+  "messages": {
+    "deleteConfirmation": "Are you sure? This action cannot be undone!"
+  },
+  "login": "Log in",
+  "register": "Register",
+  "navbar": {
+    "present": "Present"
+  }
+}

@@ -1,0 +1,39 @@
+{
+    "dialogs": {
+        "add": {
+            "basic": "Basic",
+            "category": "Kategorie",
+            "media": "Medien",
+            "misc": "Sonstiges",
+            "recommended": "Empfohlen",
+            "stdText": "Normaler Text",
+            "title": "Füge etwas hinzu"
+        }
+    },
+    "error": "Ein Fehler ist aufgetreten!",
+    "login": "Einloggen",
+    "message": "hallo i18n !!",
+    "messages": {
+        "deleteConfirmation": "Bist du sicher? Diese Aktion kann nicht rückgängig gemacht werden!"
+    },
+    "navbar": {
+        "present": "Präsentieren"
+    },
+    "placeholders": {
+        "card1": "Karte 1",
+        "card2": "Karte 2",
+        "card3": "Karte 3",
+        "card4": "Karte 4",
+        "card5": "Karte 5",
+        "card6": "Karte 6",
+        "category1": "Kategorie 1",
+        "category2": "Kategorie 2",
+        "category3": "Kategorie 3",
+        "insertTextHere": "Hier Text einfügen",
+        "randomtext1": "Lorem ipsum",
+        "randomtext2": "Dolor sit amet",
+        "randomtext3": "Consectetur",
+        "title": "Titel"
+    },
+    "register": "Registrieren"
+}

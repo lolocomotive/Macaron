@@ -3,28 +3,28 @@
         <!-- TODO: Add text under icons -->
         <div class="fg">
             <div class="tabs">
-                <h1>Add something</h1>
+                <h1>{{ t('dialogs.add.title') }}</h1>
                 <details>
-                    <summary>Recommended</summary>
+                    <summary>{{ t('dialogs.add.recommended') }}</summary>
                     <div class="grid">
                         <Icon
                             @click="add('stdText')"
                             class="option"
                             style="color: #000000a0"
                             icon="fas fa-align-justify"
-                            tooltip="Normal text"
+                            :tooltip="t('dialogs.add.stdText')"
                         />
                         <Icon
                             @click="add('stdCategory')"
                             class="option"
                             style="color: black"
                             icon="fas fa-square"
-                            tooltip="Category"
+                            :tooltip="t('dialogs.add.category')"
                         />
                     </div>
                 </details>
                 <details>
-                    <summary>Basic</summary>
+                    <summary>{{ t('dialogs.add.basic') }}</summary>
                     <div class="grid">
                         <Icon
                             @click="add('stdText')"
@@ -51,7 +51,7 @@
                     </div>
                 </details>
                 <details>
-                    <summary>Media</summary>
+                    <summary>{{ t('dialogs.add.media') }}</summary>
                     <div class="grid">
                         <Icon
                             class="option"
@@ -71,7 +71,7 @@
                     </div>
                 </details>
                 <details>
-                    <summary>Miscellaneous</summary>
+                    <summary>{{ t('dialogs.add.misc') }}</summary>
                     <div class="grid">
                         <Icon class="option" icon="fas fa-square" />
                     </div>
@@ -82,12 +82,22 @@
 </template>
 
 <script>
+import { defineComponent } from '@vue/runtime-core';
 import Icon from './Icon.vue';
-export default {
+
+import { useI18n } from 'vue-i18n';
+export default defineComponent({
     name: 'AddDialog',
     components: { Icon },
     props: {
         location: Number,
+    },
+    setup() {
+        const { t } = useI18n({
+            inheritLocale: true,
+            useScope: 'local',
+        });
+        return { t };
     },
     methods: {
         setActive(id) {
@@ -105,7 +115,7 @@ export default {
                 case 'stdText':
                     obj.type = 'card';
                     obj.cardType = 'text';
-                    obj.text = 'Insert text here';
+                    obj.text = this.t('placeholders.insertTextHere');
                     obj.id = Math.random();
                     break;
                 case 'stdCategory':
@@ -114,15 +124,15 @@ export default {
                         {
                             type: 'card',
                             cardType: 'title',
-                            text: 'Insert text here',
+                            text: this.t('placeholders.insertTextHere'),
                         },
                     ];
                     obj.cardType = 'text';
-                    obj.text = 'Insert text here';
+                    obj.text = this.t('placeholders.insertTextHere');
                     obj.id = Math.random();
                     break;
                 default:
-                    alert('An error has occured');
+                    alert(this.t('error'));
                     break;
             }
 
@@ -130,7 +140,7 @@ export default {
             this.$emit('close');
         },
     },
-};
+});
 </script>
 
 <style scoped>

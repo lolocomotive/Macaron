@@ -26,10 +26,18 @@
 <script>
 import Cards from '@/components/Cards';
 import AddDialog from '@/components/AddDialog';
+import { useI18n } from 'vue-i18n';
 
 export default {
     name: 'Home',
     components: { Cards, AddDialog },
+    setup() {
+        const { t } = useI18n({
+            inheritLocale: true,
+            useScope: 'local',
+        });
+        return { t };
+    },
     data() {
         return {
             content: [],
@@ -59,7 +67,7 @@ export default {
         this.content = [
             {
                 type: 'card',
-                text: 'Title card',
+                text: this.t('placeholders.title'),
                 cardType: 'title',
                 id: 0,
                 active: false,
@@ -67,27 +75,27 @@ export default {
             {
                 type: 'category',
                 id: 1,
-                title: 'Category 1',
+                title: this.t('placeholders.category1'),
                 content: [
                     {
                         id: 2,
                         type: 'card',
                         cardType: 'text',
-                        text: 'Card 1',
+                        text: this.t('placeholders.card1'),
                         active: false,
                     },
                     {
                         id: 3,
                         type: 'card',
                         cardType: 'text',
-                        text: 'Card 2',
+                        text: this.t('placeholders.card2'),
                         active: false,
                     },
                     {
                         id: 4,
                         type: 'card',
                         cardType: 'text',
-                        text: 'Card 3',
+                        text: this.t('placeholders.card3'),
                         active: false,
                     },
                 ],
@@ -95,32 +103,32 @@ export default {
             {
                 type: 'category',
                 id: 7,
-                title: 'Category 2',
+                text: this.t('placeholders.category2'),
                 content: [
                     {
                         type: 'category',
                         id: 8,
-                        title: 'category 3',
+                        text: this.t('placeholders.category3'),
                         content: [
                             {
                                 id: 9,
                                 type: 'card',
                                 cardType: 'text',
-                                text: 'Sabranamedecla',
+                                text: this.t('placeholders.randomtext1'),
                                 active: false,
                             },
                             {
                                 id: 13,
                                 type: 'card',
                                 cardType: 'text',
-                                text: 'Sabranamedecla',
+                                text: this.t('placeholders.randomtext2'),
                                 active: false,
                             },
                             {
                                 id: 14,
                                 type: 'card',
                                 cardType: 'text',
-                                text: 'Sabranamedecla',
+                                text: this.t('placeholders.randomtext3'),
                                 active: false,
                             },
                         ],
@@ -129,21 +137,21 @@ export default {
                         id: 10,
                         type: 'card',
                         cardType: 'text',
-                        text: 'Card 1',
+                        text: this.t('placeholders.card4'),
                         active: false,
                     },
                     {
                         id: 11,
                         type: 'card',
                         cardType: 'text',
-                        text: 'Card 2',
+                        text: this.t('placeholders.card5'),
                         active: false,
                     },
                     {
                         id: 12,
                         type: 'card',
                         cardType: 'text',
-                        text: 'Card 3',
+                        text: this.t('placeholders.card6'),
                         active: false,
                     },
                 ],
@@ -224,13 +232,13 @@ export default {
         },
 
         deleteCategory(id) {
-            if (confirm('Are you sure? This action cannot be undone')) {
+            if (confirm(this.t('messages.deleteConfirmation'))) {
                 this.deleteElement(id, this.content);
             }
         },
 
         deleteItem(id) {
-            if (confirm('Are you sure? This action cannot be undone')) {
+            if (confirm(this.t('messages.deleteConfirmation'))) {
                 this.deleteElement(id, this.content);
             }
         },

@@ -1,6 +1,10 @@
 <template>
     <div :onclick="click" :class="`card ${type}` + (active ? ' active' : '')">
-        <CardToolbar @deleteItem="deleteItem" :active="active" title="Titre" />
+        <CardToolbar
+            @deleteItem="deleteItem"
+            :active="active"
+            :title="t('placeholders.title')"
+        />
         <div class="card-body">
             <div
                 :class="`content ${type}` + (active ? ' active' : '')"
@@ -15,9 +19,9 @@
 </template>
 <script>
 import CardToolbar from './CardToolbar.vue';
-
+import { useI18n } from 'vue-i18n';
 export default {
-    name: 'Card',
+    name: 'card',
     props: {
         text: String,
         active: Boolean,
@@ -27,6 +31,13 @@ export default {
     },
     components: {
         CardToolbar,
+    },
+    setup() {
+        const { t } = useI18n({
+            inheritLocale: true,
+            useScope: 'local',
+        });
+        return { t };
     },
     methods: {
         focus() {
