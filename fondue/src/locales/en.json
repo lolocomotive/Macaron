@@ -1,14 +1,17 @@
 {
-  "message": "hello i18n !!",
   "dialogs": {
     "add": {
       "title": "Add something",
-      "recommended": "Recommended",
       "stdText": "Normal text",
       "category": "Category",
       "basic": "Basic",
       "media": "Media",
-      "misc": "Miscellaneous"
+      "misc": "Miscellaneous",
+      "text": "Text",
+      "unbound": "Unbound",
+      "image": "Image",
+      "video": "Video",
+      "embed": "Embed"
     }
   },
   "placeholders": {
@@ -35,5 +38,8 @@
   "register": "Register",
   "navbar": {
     "present": "Present"
+  },
+  "home": {
+    "welcome": "Welcome to Macaron ic"
   }
 }

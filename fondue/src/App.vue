@@ -1,7 +1,10 @@
 <template>
     <div>
-        <Nav />
-        <router-view />
+        <Nav :class="presentationMode ? 'up' : ''" />
+        <router-view
+            :class="presentationMode ? 'up' : ''"
+            :presentationMode="presentationMode"
+        />
     </div>
 </template>
 <script>
@@ -10,6 +13,11 @@ export default {
     name: 'App',
     components: {
         Nav,
+    },
+    data() {
+        return {
+            presentationMode: false,
+        };
     },
 };
 </script>
@@ -61,14 +69,15 @@ body {
     background-color: var(--background);
     color: var(--foreground);
 }
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;200;300;400;500;600;700;900&display=swap');
 #app {
     font-family: Lato, Helvetica, Arial, sans-serif;
     color: var(--foreground);
 }
 
-#nav {
-    padding: 30px;
+#navbar {
+    transition: transform 0.5s;
+    transform: translateY(0);
 }
 
 #nav a {
@@ -116,5 +125,11 @@ body {
     100% {
         opacity: 1;
     }
+}
+.up#navbar {
+    transform: translateY(-100%);
+}
+.up.home {
+    transform: translateY(-80px);
 }
 </style>

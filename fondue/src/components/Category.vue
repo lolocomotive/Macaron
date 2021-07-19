@@ -1,12 +1,21 @@
 <template>
-    <div class="category-wrapper">
+    <div
+        :class="`category-wrapper ${presentationMode ? 'p' : 'e'} ${
+            collapsed ? 'c' : 'o'
+        }`"
+    >
         <CategoryToolbar
+            v-if="!presentationMode"
             @changeTitle="changeTitle"
             @deleteCategory="deleteCategory"
             :title="title"
             :active="true"
         />
-        <div :class="'category' + (isSubcategory ? ' sub' : '')">
+        <div
+            :class="`category ${isSubcategory ? ' sub' : ''} ${
+                presentationMode ? 'p' : 'e'
+            }`"
+        >
             <Cards
                 @addCard="addCard"
                 @deleteItem="deleteItem"
@@ -16,6 +25,7 @@
                 @changeActive="changeActive"
                 :content="content"
                 :isSubcategory="true"
+                :presentationMode="presentationMode"
             />
         </div>
     </div>
@@ -29,13 +39,18 @@ export default {
         Cards,
         CategoryToolbar,
     },
-
+    data() {
+        return {
+            collapsed: Boolean,
+        };
+    },
     props: {
         content: Object,
         id: Number,
         cards: Object,
         isSubcategory: Boolean,
         title: String,
+        presentationMode: Boolean,
     },
     methods: {
         changeActive(id) {
@@ -88,5 +103,8 @@ export default {
     background-color: var(--background-shade-1);
     border-radius: 5px 5px 0 0;
     overflow: hidden;
+}
+.category-wrapper.p {
+    box-shadow: none;
 }
 </style>

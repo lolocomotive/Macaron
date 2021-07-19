@@ -5,7 +5,7 @@
             <div class="tabs">
                 <h1>{{ t('dialogs.add.title') }}</h1>
                 <details>
-                    <summary>{{ t('dialogs.add.recommended') }}</summary>
+                    <summary>{{ t('dialogs.add.basic') }}</summary>
                     <div class="grid">
                         <Icon
                             @click="add('stdText')"
@@ -24,29 +24,32 @@
                     </div>
                 </details>
                 <details>
-                    <summary>{{ t('dialogs.add.basic') }}</summary>
+                    <summary>{{ t('dialogs.add.text') }}</summary>
                     <div class="grid">
                         <Icon
                             @click="add('stdText')"
                             class="option"
                             style="color: #000000a0"
-                            icon="fas
-                        fa-align-justify"
+                            icon="fas fa-align-justify"
+                            :tooltip="t('dialogs.add.stdText')"
                         />
                         <Icon
                             class="option"
                             style="color: red"
                             icon="fas fa-align-justify"
+                            :tooltip="t('dialogs.add.unbound')"
                         />
                         <Icon
                             class="option"
                             style="color: green"
                             icon="fas fa-align-justify"
+                            :tooltip="t('dialogs.add.unbound')"
                         />
                         <Icon
                             class="option"
                             style="color: var(--purple)"
                             icon="fas fa-align-justify"
+                            :tooltip="t('dialogs.add.unbound')"
                         />
                     </div>
                 </details>
@@ -57,23 +60,30 @@
                             class="option"
                             style="color: #000000a0"
                             icon="fas fa-image"
+                            :tooltip="t('dialogs.add.image')"
                         />
                         <Icon
                             class="option"
                             style="color: #000000a0"
                             icon="fas fa-video"
+                            :tooltip="t('dialogs.add.video')"
                         />
                         <Icon
                             class="option"
                             style="color: #000000a0"
                             icon="fas fa-code"
+                            :tooltip="t('dialogs.add.embed')"
                         />
                     </div>
                 </details>
                 <details>
                     <summary>{{ t('dialogs.add.misc') }}</summary>
                     <div class="grid">
-                        <Icon class="option" icon="fas fa-square" />
+                        <Icon
+                            class="option"
+                            icon="fas fa-square"
+                            :tooltip="t('dialogs.add.unbound')"
+                        />
                     </div>
                 </details>
             </div>
@@ -125,6 +135,7 @@ export default defineComponent({
                             type: 'card',
                             cardType: 'title',
                             text: this.t('placeholders.insertTextHere'),
+                            id: Math.random(),
                         },
                     ];
                     obj.cardType = 'text';

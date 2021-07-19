@@ -1,16 +1,21 @@
 <template>
-    <div :onclick="click" :class="`card ${type}` + (active ? ' active' : '')">
+    <div
+        :onclick="click"
+        :class="`card ${type} ${active ? ' active' : ''} ${
+            presentationMode ? 'p' : 'e'
+        }`"
+    >
         <CardToolbar
             @deleteItem="deleteItem"
-            :active="active"
+            :active="active && !presentationMode"
             :title="t('placeholders.title')"
         />
         <div class="card-body">
             <div
-                :class="`content ${type}` + (active ? ' active' : '')"
+                :class="`content ${type} ${active ? 'active' : ''}`"
                 :oninput="updateContent"
                 :onfocus="focus"
-                contenteditable="true"
+                :contenteditable="!presentationMode"
             >
                 {{ text }}
             </div>
@@ -28,6 +33,7 @@ export default {
         id: Number,
         type: String,
         sub: Boolean,
+        presentationMode: Boolean,
     },
     components: {
         CardToolbar,
@@ -60,6 +66,11 @@ export default {
 };
 </script>
 <style scoped>
+.card.p {
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+}
 .card {
     margin: auto;
     max-width: var(--card-width);
@@ -79,7 +90,7 @@ export default {
     padding: 15px;
 }
 
-.card.active {
+.card.active.e {
     border: solid var(--background-tone) 1pt;
     box-shadow: 0 0 30px 10px var(--background-shade-2);
 }

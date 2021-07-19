@@ -2,13 +2,7 @@
     <div id="navbar">
         <MenuBtn />
         <h1>{{ getTitle }}</h1>
-        <PresentBtn
-            :style="
-                isProjectPage
-                    ? ''
-                    : 'opacity:0; pointer-events:none;user-select:none;'
-            "
-        />
+        <PresentBtn v-if="isProjectPage" />
     </div>
 </template>
 <script>
@@ -31,7 +25,7 @@ export default {
     },
     computed: {
         isProjectPage() {
-            return this.$route.name === 'Home';
+            return this.$route.name === 'Editor';
         },
         getTitle() {
             let title = '';

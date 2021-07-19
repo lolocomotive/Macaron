@@ -10,6 +10,7 @@
                 :id="item.id"
                 :active="item.active"
                 :type="item.cardType"
+                :presentationMode="presentationMode"
             />
             <Category
                 @deleteItem="deleteItem"
@@ -24,9 +25,10 @@
                 :cards="cards"
                 :title="item.title"
                 :isSubcategory="isSubcategory"
+                :presentationMode="presentationMode"
             />
         </div>
-        <div class="addBtnWrapper">
+        <div v-if="!presentationMode" class="addBtnWrapper">
             <Icon @click="add" icon="far fa-plus-square" />
         </div>
     </div>
@@ -42,6 +44,7 @@ export default {
         content: Object,
         cards: Object,
         isSubcategory: Boolean,
+        presentationMode: Boolean,
     },
     methods: {
         changeActive(id) {
